@@ -1,0 +1,53 @@
+{
+  "name": "sky_rescue_demo",
+  "waypoints": [
+    {
+      "name": "HOME_START",
+      "latitude_deg": 36.3210000,
+      "longitude_deg": 127.4080000,
+      "relative_altitude_m": 10.0,
+      "acceptance_radius_m": 5.0,
+      "fly_through": false
+    },
+    {
+      "name": "WPT1",
+      "latitude_deg": 36.3211000,
+      "longitude_deg": 127.4081000,
+      "relative_altitude_m": 20.0,
+      "acceptance_radius_m": 8.0,
+      "fly_through": true
+    },
+    {
+      "name": "WPT2",
+      "latitude_deg": 36.3212000,
+      "longitude_deg": 127.4082000,
+      "relative_altitude_m": 25.0,
+      "acceptance_radius_m": 8.0,
+      "fly_through": true
+    },
+    {
+      "name": "WPT3",
+      "latitude_deg": 36.3213000,
+      "longitude_deg": 127.4083000,
+      "relative_altitude_m": 25.0,
+      "acceptance_radius_m": 8.0,
+      "fly_through": true
+    },
+    {
+      "name": "REP",
+      "latitude_deg": 36.3214000,
+      "longitude_deg": 127.4084000,
+      "relative_altitude_m": 15.0,
+      "acceptance_radius_m": 5.0,
+      "fly_through": false
+    },
+    {
+      "name": "HOME_RETURN",
+      "latitude_deg": 36.3210000,
+      "longitude_deg": 127.4080000,
+      "relative_altitude_m": 10.0,
+      "acceptance_radius_m": 5.0,
+      "fly_through": false
+    }
+  ]
+}

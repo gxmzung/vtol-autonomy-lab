@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Runtime logs and reports
+logs/*
+!logs/.gitkeep
+*.log
+*.csv
+
+# Flight and GCS logs
+*.ulg
+*.tlog
+*.bin
+*.mavlink
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets.*
+credentials.*
+*.key
+*.pem
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak

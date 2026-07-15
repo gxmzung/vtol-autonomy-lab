@@ -1,0 +1,22 @@
+VTOL 칼만필터 표적추정 패치
+
+추가 파일
+- src/target_filter.py
+- src/noisy_target_simulator.py
+- src/filtered_target_pipeline.py
+- tests/test_target_filter.py
+- tests/test_noisy_target_simulator.py
+- tests/test_filtered_target_pipeline.py
+
+기능
+- 북/동 위치 및 속도 추정
+- 측정 신뢰도 검사
+- 혁신값 기반 이상치 제거
+- 짧은 탐지 누락 중 위치 예측
+- 오래된 표적 데이터 차단
+- 공분산 기반 추적 안정성 판정
+- Offboard 접근 허용/거부 게이트
+- 재현 가능한 노이즈/누락/이상치 시뮬레이터
+
+현재 프로젝트가 129 passed라면 새 테스트 16개가 추가되어
+정상 목표는 145 passed입니다.

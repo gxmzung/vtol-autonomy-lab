@@ -1,0 +1,5 @@
+mavsdk==3.15.3
+pandas>=2.2,<4
+matplotlib>=3.8,<4
+pydantic>=2.7,<3
+pytest>=9.1,<10

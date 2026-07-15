@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software in research or education, please cite this repository."
+title: "VTOL Autonomy Lab"
+type: software
+authors:
+  - alias: "gxmzung"
+repository-code: "https://github.com/gxmzung/vtol-autonomy-lab"
+url: "https://github.com/gxmzung/vtol-autonomy-lab"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-15
+keywords:
+  - PX4
+  - MAVSDK
+  - MAVLink
+  - VTOL
+  - UAV
+  - Offboard control
+  - MissionRaw
+  - Kalman filter

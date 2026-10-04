@@ -1,3 +1,32 @@
+﻿<!-- PORTFOLIO-HEADER:START -->
+
+# vtol-autonomy-lab
+
+> PX4/MAVSDK VTOL autonomy framework with hybrid missions, failsafe supervision, fault injection, and verification.
+
+**Domain:** UAV · Autonomous Systems · Mission Software  
+**Role:** Architecture · Mission Logic · Verification  
+**Status:** Research / Simulation / Software Verification
+
+## Portfolio Summary
+
+### System Focus
+
+- PX4 / MAVSDK mission integration
+- MissionRaw · Action · Offboard · RTL responsibility separation
+- state-machine mission control
+- Failsafe Supervisor · Command Guard
+- fault injection and automated verification
+- target-state estimation / Kalman filtering
+
+### Engineering Boundary
+
+> Software and simulation verification are separated from real-aircraft and hardware flight verification. The repository does not claim flight-safety certification.
+
+---
+
+<!-- PORTFOLIO-HEADER:END -->
+
 # VTOL Autonomy Lab
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -339,3 +368,4 @@ python -m src.fc_validation_cli ^
 ## 13. 작성자
 
 - GitHub: [gxmzung](https://github.com/gxmzung)
+

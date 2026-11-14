@@ -1,7 +1,6 @@
-"""Repeatable, hardware-free VTOL regression gate.
+"""Fail-closed virtual-only VTOL verification entrypoint.
 
-Run from any working directory with Python 3.11+ after installing requirements.
-No MAVSDK connection, arm or takeoff command is issued by this script.
+No PX4/MAVSDK connection or hardware commands are issued.
 """
 from __future__ import annotations
 
@@ -10,22 +9,25 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-STEPS = (
+CHECKS = (
     ("syntax", [sys.executable, "-m", "compileall", "-q", "src", "tests"]),
-    ("unit-regression", [sys.executable, "-m", "pytest", "-q"]),
-    ("virtual-normal", [sys.executable, "-m", "src.mission_manager", "--backend", "virtual", "--scenario", "normal", "--mission-file", "config/mission.json"]),
-    ("virtual-low-battery", [sys.executable, "-m", "src.mission_manager", "--backend", "virtual", "--scenario", "low_battery", "--mission-file", "config/mission.json"]),
+    ("regression", [sys.executable, "-m", "pytest", "-q"]),
+    # The targeted tests assert both final state and exact failure code.
+    ("semantic-mission-assertions", [
+        sys.executable, "-m", "pytest", "-q",
+        "tests/test_failure_scenarios.py",
+    ]),
 )
 
 def main() -> int:
-    for name, command in STEPS:
+    for name, command in CHECKS:
         print(f"\n[verify] {name}: {' '.join(command)}", flush=True)
-        result = subprocess.run(command, cwd=ROOT, check=False)
-        if result.returncode:
-            print(f"[verify] FAILED: {name} (exit={result.returncode})", file=sys.stderr)
-            return result.returncode
-    print("\n[verify] All offline commands exited successfully.")
-    print("[verify] This does NOT demonstrate PX4, SITL, physical FC or flight safety.")
+        outcome = subprocess.run(command, cwd=ROOT, check=False)
+        if outcome.returncode != 0:
+            print(f"[verify] FAIL {name} (exit={outcome.returncode})", file=sys.stderr)
+            return outcome.returncode
+    print("\n[verify] PASS: offline regression + scenario state/failure-code assertions")
+    print("[verify] NOT evidence of PX4, SITL, flight safety, or real hardware.")
     return 0
 
 if __name__ == "__main__":

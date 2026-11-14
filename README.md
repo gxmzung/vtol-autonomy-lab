@@ -27,6 +27,24 @@
 
 <!-- PORTFOLIO-HEADER:END -->
 
+## 5분 안에 재현하기 — 가상 임무만 검증
+
+**처음 방문한 개발자라면 이 경로부터 실행하세요.** Python 3.11 환경에서 저장소를 클론한 후:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-ci.txt
+.\.venv\Scripts\python.exe scripts/verify_virtual_mission.py
+```
+
+Linux/macOS에서는 가상환경을 활성화하고 `python scripts/verify_virtual_mission.py`를 실행하세요. 검증 스크립트는 문법 검사, 전체 pytest, 정상 및 고장 가상임무의 **최종 상태·실패 코드 단언 테스트**를 실행합니다. [재현성 및 증빙 가이드](docs/REPRODUCIBILITY.md)와 [실제 CI 결과](https://github.com/gxmzung/vtol-autonomy-lab/actions/workflows/tests.yml)를 함께 확인하세요.
+
+- **가능:** 가상 비행제어기 기반 상태전환·Failsafe 단위/회귀 검증
+- **불가능/미검증:** PX4 SITL 통합, 실제 FC 연결 안정성, 실기체 비행 및 안전성
+- **관련 프로젝트:** [VTOL Mission Systems](https://github.com/gxmzung/vtol-mission-systems)는 ROS 2 메시지 인터페이스·텔레메트리 관측과 증빙에 집중하며, 이 저장소는 MAVSDK/가상 FC 기반 임무제어·고장 대응에 집중합니다.
+
+---
+
 # VTOL Autonomy Lab
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)

@@ -29,7 +29,9 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path evidence | Out-Null
           "repository=$env:GITHUB_REPOSITORY" | Set-Content evidence/metadata.txt
-          "commit=$env:GITHUB_SHA" | Add-Content evidence/metadata.txt
+          "checkout_sha=$(git rev-parse HEAD)" | Add-Content evidence/metadata.txt
+          "event_sha=$env:GITHUB_SHA" | Add-Content evidence/metadata.txt
+          "pr_head_sha=${{ github.event.pull_request.head.sha || github.sha }}" | Add-Content evidence/metadata.txt
           "run_id=$env:GITHUB_RUN_ID" | Add-Content evidence/metadata.txt
           "runner=$env:RUNNER_OS" | Add-Content evidence/metadata.txt
           python --version 2>&1 | Add-Content evidence/metadata.txt

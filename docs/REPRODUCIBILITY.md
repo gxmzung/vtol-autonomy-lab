@@ -6,7 +6,8 @@
 ## 환경 및 시작
 - Windows PowerShell 또는 Linux/macOS 셸, Python 3.11 권장
 - 저장소 루트에서 `python -m venv .venv` 후 활성화
-- `python -m pip install -r requirements.txt`
+- 일반 개발: `python -m pip install -r requirements.txt`
+- CI 직접 의존성 버전 재현: `python -m pip install -r requirements-ci.txt`
 - 버전 및 기준 커밋 기록: `python --version`, `python -m pip freeze`, `git rev-parse HEAD`
 
 ## 단일 검증 명령
@@ -31,3 +32,6 @@ python scripts/verify_virtual_mission.py
 - [테스트](TESTING.md)
 - [안전 원칙](SAFETY.md)
 - [개발 상태](DEVELOPMENT_STATUS.md)
+
+## 의존성 재현 정확도
+`requirements-ci.txt`는 실제 통과한 CI의 **직접 의존성** 버전을 고정합니다. 간접 의존성까지 포함한 완전한 lockfile은 아니므로, 재현 실험 시 아티팩트에 저장된 `dependencies.txt`와 Python/OS/커밋 SHA를 함께 확인해야 합니다. 설치 환경을 여러 번 재구성하고 동일 결과가 나는지는 별도 평가 대상입니다.

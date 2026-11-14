@@ -14,9 +14,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
@@ -35,6 +35,7 @@ jobs:
           "run_id=$env:GITHUB_RUN_ID" | Add-Content evidence/metadata.txt
           "runner=$env:RUNNER_OS" | Add-Content evidence/metadata.txt
           python --version 2>&1 | Add-Content evidence/metadata.txt
+          python -m pip freeze | Set-Content evidence/dependencies.txt
       - name: Reproducible virtual mission regression gate
         shell: pwsh
         run: |
@@ -44,7 +45,7 @@ jobs:
           if ($status -ne 0) { exit $status }
       - name: Upload offline evidence (not flight proof)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: vtol-autonomy-offline-${{ github.run_id }}
           path: evidence/

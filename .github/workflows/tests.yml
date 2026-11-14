@@ -25,8 +25,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Compile source
-        run: python -m compileall src tests
-
-      - name: Run tests
-        run: python -m pytest -v
+      - name: Reproducible virtual mission regression gate
+        run: python scripts/verify_virtual_mission.py
